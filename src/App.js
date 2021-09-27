@@ -40,6 +40,15 @@ return(
 )
 };
 
+const Button = ({ voteHandler, changeHandler }) => {
+return(
+  <div>
+          <button className="btn btn-lg btn-success" onClick={voteHandler}>Vote</button>
+      <button className="btn btn-lg float-right btn-success" onClick={changeHandler}>Next</button>
+  </div>
+)
+};
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often',
@@ -68,8 +77,7 @@ const App = () => {
   return (
     <div className="container rounded bg-info mt-3 p-3">
       <Display anecdotes={anecdotes} selected={selected} vote={vote} />
-      <button className="btn btn-lg btn-success" onClick={voteHandler}>Vote</button>
-      <button className="btn btn-lg float-right btn-success" onClick={changeHandler}>Next</button>
+      <Button voteHandler={voteHandler} changeHandler={changeHandler} />
       <MostVoted vote={vote} anecdotes={anecdotes} />
     </div>
   )

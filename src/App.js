@@ -29,6 +29,17 @@ const MostVoted = ({ vote,anecdotes }) => {
  
 };
 
+const Display = ({ anecdotes,selected,vote }) => {
+return(
+  <div>
+    <h1 className="font-weight-bold text-warning">Anecdotes</h1>
+      <p className="bg-light text-info p-1">{anecdotes[selected]}</p>
+      <p>has {vote[selected]} votes</p>
+      
+  </div>
+)
+};
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often',
@@ -56,9 +67,7 @@ const App = () => {
 
   return (
     <div className="container rounded bg-info mt-3 p-3">
-      <h1 className="font-weight-bold text-warning">Anecdaotes</h1>
-      <p className="bg-light text-info p-1">{anecdotes[selected]}</p>
-      <p>has {vote[selected]} votes</p>
+      <Display anecdotes={anecdotes} selected={selected} vote={vote} />
       <button className="btn btn-lg btn-success" onClick={voteHandler}>Vote</button>
       <button className="btn btn-lg float-right btn-success" onClick={changeHandler}>Next</button>
       <MostVoted vote={vote} anecdotes={anecdotes} />
